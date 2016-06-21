@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		模板<br/>
+		{$aaa}<br/>
+		{$arr.0}---{$arr[1]}---{$arr.2}<br/>
+		{$Think.server.http_user_agent}<br/>
+		{$str|md5=###}<br/>
+		{$i+$j}<br/>
+		<table border="1" bordercolor="blue" width="100%" cellspace="0">
+			<tr>
+				<td>班级id</td>
+				<td>班级名称</td>
+				<td>状态</td>
+				<td>类型</td>
+				<td>创建时间</td>
+				<td>人数</td>
+				<td>班主任</td>
+				<td>管理员</td>
+				<td>开始时间</td>
+				<td>结束时间</td>
+				<td>备注</td>
+			</tr>
+			<!-- 
+			<volist name="data" id="class" mod="2" empty="$msg" key="i">
+				第{$i}次循环的索引为{$key}
+				<eq name="mod" value="0">
+					<tr style="background-color:green;">
+						<td>{$class.classid}</td>
+						<td>{$class.name}</td>
+						<td>
+							<if condition="$class.staid eq 1">正常
+							<elseif condition="$class.staid eq 2"/>合并
+							<else/>结业
+							</if>
+						</td>
+						<td>
+							<if condition="$class.tid eq 1">常规班
+							<elseif condition="$class.tid eq 2"/>快速班
+							<elseif condition="$class.tid eq 3"/>flash班
+							<else/>php班
+							</if>
+						</td>
+						<td>{$class.regtime}</td>
+						<td>{$class.pno}</td>
+						<td>
+							<if condition="$class.headerid eq 1">吴昌勇
+							<elseif condition="$class.headerid eq 2"/>杨丹丹
+							<elseif condition="$class.headerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>
+							<if condition="$class.managerid eq 1">吴昌勇
+							<elseif condition="$class.managerid eq 2"/>杨丹丹
+							<elseif condition="$class.managerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>{$class.starttime}</td>
+						<td>{$class.endtime}</td>
+						<td>{$class.mark}</td>
+					</tr>
+				</eq>
+				<eq name="mod" value="1">
+					<tr style="background-color:orange;">
+						<td>{$class.classid}</td>
+						<td>{$class.name}</td>
+						<td>
+							<if condition="$class.staid eq 1">正常
+							<elseif condition="$class.staid eq 2"/>合并
+							<else/>结业
+							</if>
+						</td>
+						<td>
+							<if condition="$class.tid eq 1">常规班
+							<elseif condition="$class.tid eq 2"/>快速班
+							<elseif condition="$class.tid eq 3"/>flash班
+							<else/>php班
+							</if>
+						</td>
+						<td>{$class.regtime}</td>
+						<td>{$class.pno}</td>
+						<td>
+							<if condition="$class.managerid eq 1">吴昌勇
+							<elseif condition="$class.managerid eq 2"/>杨丹丹
+							<elseif condition="$class.managerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>
+							<if condition="$class.managerid eq 1">吴昌勇
+							<elseif condition="$class.managerid eq 2"/>杨丹丹
+							<elseif condition="$class.managerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>{$class.starttime}</td>
+						<td>{$class.endtime}</td>
+						<td>{$class.mark}</td>
+					</tr>
+				</eq>
+			</volist>
+			 -->
+			<for start="0" end="$arraylength" comparsion="lt" step="1" name="i">
+				<eq name="i%2" value="0">
+					<tr style="background-color:green;">
+						<td>{$data.$i.classid}</td>
+						<td>{$data.$i.name}</td>
+						<td>{$data.$i.csname}</td>
+						<td>{$data.$i.ctname}</td>
+						<td>{$data.$i.regtime}</td>
+						<td>{$data.$i.pno}</td>
+						<td>{$data.$i.headerid}</td>
+						<td>{$data.$i.managerid}</td>
+						<td>{$data.$i.starttime}</td>
+						<td>{$data.$i.endtime}</td>
+						<td>{$data.$i.mark}</td>
+					</tr>
+				</eq>
+				<eq name="i%2" value="1">
+					<tr style="background-color:orange;">
+						<td>{$data.$i.classid}</td>
+						<td>{$data.$i.name}</td>
+						<td>{$data.$i.csname}</td>
+						<td>{$data.$i.ctname}</td>
+						<td>{$data.$i.regtime}</td>
+						<td>{$data.$i.pno}</td>
+						<td>{$data.$i.headerid}</td>
+						<td>{$data.$i.managerid}</td>
+						<td>{$data.$i.starttime}</td>
+						<td>{$data.$i.endtime}</td>
+						<td>{$data.$i.mark}</td>
+					</tr>
+				</eq>
+			</for>
+			<!--  
+			<foreach name="data" item="class" key="i">
+			<eq name="i%2" value="0">
+					<tr style="background-color:green;">
+						<td>{$class.classid}</td>
+						<td>{$class.name}</td>
+						<td>
+							<if condition="$class.staid eq 1">正常
+							<elseif condition="$class.staid eq 2"/>合并
+							<else/>结业
+							</if>
+						</td>
+						<td>
+							<if condition="$class.tid eq 1">常规班
+							<elseif condition="$class.tid eq 2"/>快速班
+							<elseif condition="$class.tid eq 3"/>flash班
+							<else/>php班
+							</if>
+						</td>
+						<td>{$class.regtime}</td>
+						<td>{$class.pno}</td>
+						<td>
+							<if condition="$class.headerid eq 1">吴昌勇
+							<elseif condition="$class.headerid eq 2"/>杨丹丹
+							<elseif condition="$class.headerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>
+							<if condition="$class.managerid eq 1">吴昌勇
+							<elseif condition="$class.managerid eq 2"/>杨丹丹
+							<elseif condition="$class.managerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>{$class.starttime}</td>
+						<td>{$class.endtime}</td>
+						<td>{$class.mark}</td>
+					</tr>
+				</eq>
+				<eq name="i%2" value="1">
+					<tr style="background-color:orange;">
+						<td>{$class.classid}</td>
+						<td>{$class.name}</td>
+						<td>
+							<if condition="$class.staid eq 1">正常
+							<elseif condition="$class.staid eq 2"/>合并
+							<else/>结业
+							</if>
+						</td>
+						<td>
+							<if condition="$class.tid eq 1">常规班
+							<elseif condition="$class.tid eq 2"/>快速班
+							<elseif condition="$class.tid eq 3"/>flash班
+							<else/>php班
+							</if>
+						</td>
+						<td>{$class.regtime}</td>
+						<td>{$class.pno}</td>
+						<td>
+							<if condition="$class.headerid eq 1">吴昌勇
+							<elseif condition="$class.headerid eq 2"/>杨丹丹
+							<elseif condition="$class.headerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>
+							<if condition="$class.managerid eq 1">吴昌勇
+							<elseif condition="$class.managerid eq 2"/>杨丹丹
+							<elseif condition="$class.managerid eq 3"/>张三丰
+							<else/>张无忌
+							</if>
+						</td>
+						<td>{$class.starttime}</td>
+						<td>{$class.endtime}</td>
+						<td>{$class.mark}</td>
+					</tr>
+				</eq>
+			</foreach>-->
+		</table>
+		<if condition="$j eq 5">
+			哈哈哈哈哈哈哈
+		<elseif condition="$j eq 3"/>
+			你好
+		<else />
+			呵呵呵呵
+		</if>
+	</body>
+</html>
